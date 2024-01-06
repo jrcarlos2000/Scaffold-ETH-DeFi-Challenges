@@ -96,7 +96,7 @@ function main() {
       (transaction) => transaction.transactionType == "CREATE"
     );
     transactionsCreate.forEach((transaction) => {
-      const artifact = getArtifactOfContract(transaction.contractName);
+      const artifact = getArtifactOfContract(transaction.contractName || deployments[chain][transaction.contractAddress]);
       allGeneratedContracts[chain][
         deployments[chain][transaction.contractAddress] ||
           transaction.contractName
